@@ -11,10 +11,10 @@ window.CASPIAN = {
       name: "Security Guard",
       short: "A reassuring presence. A watchful eye.",
       description:
-        "Visible, professional security for your premises, people and day-to-day operations.",
+        "Professional guarding for people and premises.",
       heading: "A visible presence.\nLasting peace of mind.",
       intro:
-        "From a welcoming reception to a watchful presence on the floor, guarding brings security into the everyday running of your premises.",
+        "A professional on-site presence to protect your premises and support daily operations.",
       image: "team.jpg",
       icon: "shield",
       suitable:
@@ -40,11 +40,11 @@ window.CASPIAN = {
       faqs: [
         [
           "Can guarding cover short-term requirements?",
-          "Tell us your dates, operating hours and site needs. We will discuss the coverage and availability with you.",
+          "Share your dates and hours. We’ll confirm coverage and availability.",
         ],
         [
           "What should I include in my enquiry?",
-          "Include the property type, location, number of entrances, hours of cover and any concerns you want to address.",
+          "Include your location, property type, hours and main concerns.",
         ],
       ],
     },
@@ -53,10 +53,10 @@ window.CASPIAN = {
       name: "Mobile Patrol",
       short: "Protection that keeps moving.",
       description:
-        "Scheduled security visits that keep a watchful eye on your property.",
+        "Scheduled visits to protect your property.",
       heading: "Your property.\nOur watchful eye.",
       intro:
-        "Mobile patrols provide a visible security presence without the need for a permanent on-site post. Build a schedule around your premises and the times that matter most.",
+        "Regular security visits, scheduled around your property and operating hours.",
       image: "premises.jpg",
       icon: "patrol",
       suitable:
@@ -82,11 +82,11 @@ window.CASPIAN = {
       faqs: [
         [
           "How often can patrols visit?",
-          "Frequency is agreed around your site, operating hours and requirements. Include your preferred schedule when requesting a quote.",
+          "Visits are agreed around your site and preferred schedule.",
         ],
         [
           "Can you cover more than one property?",
-          "Share the locations and requirements for each property so we can assess a suitable patrol arrangement.",
+          "Share each location so we can assess a suitable patrol plan.",
         ],
       ],
     },
@@ -95,10 +95,10 @@ window.CASPIAN = {
       name: "Door Supervisor",
       short: "A warm welcome. A secure entrance.",
       description:
-        "Professional entry management that supports a safe, welcoming venue.",
+        "Safe, welcoming entry management.",
       heading: "First impressions.\nSecurity that lasts.",
       intro:
-        "Your entrance sets the tone. Door supervision balances a professional welcome with controlled access, clear communication and a calm approach to difficult situations.",
+        "A professional welcome, controlled access and calm support at your entrance.",
       image: "team.jpg",
       icon: "door",
       suitable:
@@ -124,11 +124,11 @@ window.CASPIAN = {
       faqs: [
         [
           "Can I request cover for a single evening?",
-          "Yes, you can enquire about a single date or ongoing requirements. Cover is subject to an agreed scope and availability.",
+          "Yes. Single-date and regular cover are subject to availability and an agreed brief.",
         ],
         [
           "How many supervisors does my venue need?",
-          "Tell us your capacity, layout, opening hours and event type. Staffing should reflect the specific venue and risk assessment.",
+          "Staffing depends on your capacity, layout, hours and risk assessment.",
         ],
       ],
     },
@@ -137,10 +137,10 @@ window.CASPIAN = {
       name: "Event Security",
       short: "Your event. Everyone’s peace of mind.",
       description:
-        "Thoughtful security planning for a safer, well-managed event.",
+        "Security for a safe, well-run event.",
       heading: "A memorable event.\nFor all the right reasons.",
       intro:
-        "From the first arrival to the final departure, an organised security presence helps your event run smoothly. Discuss an approach that works with your audience, venue and programme.",
+        "Keep arrivals, access and departures organised with security tailored to your event.",
       image: "team.jpg",
       icon: "event",
       suitable:
@@ -166,11 +166,11 @@ window.CASPIAN = {
       faqs: [
         [
           "When should I enquire?",
-          "As early as possible, especially for larger events. Include the date, venue, expected attendance and programme.",
+          "Enquire early with your date, venue and expected attendance.",
         ],
         [
           "Can security work alongside my event staff?",
-          "The brief can define how security coordinates with stewards, venue management and other event personnel.",
+          "Yes. We agree coordination with your event and venue teams.",
         ],
       ],
     },
@@ -179,10 +179,10 @@ window.CASPIAN = {
       name: "Construction Site Security",
       short: "Protect your site. Keep work moving.",
       description:
-        "Security focused on your site, equipment and access points.",
+        "Protect your site, equipment and access points.",
       heading: "Secure your site.\nProtect your progress.",
       intro:
-        "Construction sites change every day. Plan security around your current phase of work, access arrangements and the equipment and materials on site.",
+        "Protect access points, equipment and materials throughout your project.",
       image: "site-officer.jpg",
       icon: "building",
       suitable:
@@ -208,11 +208,11 @@ window.CASPIAN = {
       faqs: [
         [
           "Can coverage change as the project develops?",
-          "Discuss changing site phases and timelines with us so the security plan can be reviewed.",
+          "Yes. Review your coverage with us as the project changes.",
         ],
         [
           "Can patrols complement on-site guarding?",
-          "We can discuss a combination of guarding and patrols based on site layout, hours and your requirements.",
+          "Yes. Combine guarding and patrols around your site and hours.",
         ],
       ],
     },

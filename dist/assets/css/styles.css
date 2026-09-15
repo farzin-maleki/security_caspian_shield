@@ -269,10 +269,14 @@ header :focus-visible {
   font-size: 0.875rem;
 }
 .main-nav > a:not(.button) {
-  padding: 34px 0;
+  padding: 0;
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-bottom: 2px solid transparent;
 }
-.main-nav > a[aria-current="page"] {
+.main-nav > a:not(.button)[aria-current="page"] {
   border-bottom-color: var(--yellow);
   color: var(--yellow);
 }
@@ -288,20 +292,31 @@ header :focus-visible {
 .nav-services summary {
   cursor: pointer;
   list-style: none;
-  padding: 28px 0;
+  padding: 0;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid transparent;
 }
 .nav-services summary::-webkit-details-marker {
   display: none;
 }
 .nav-services summary:after {
-  content: "⌄";
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url('../icons/chevron.svg') center / contain no-repeat;
   margin-left: 8px;
   color: var(--yellow);
 }
 .dropdown {
   position: absolute;
   left: -22px;
-  top: 70px;
+  top: calc(100% + 12px);
   width: 270px;
   background: var(--navy-light);
   box-shadow: 0 15px 40px #0004;
@@ -366,7 +381,13 @@ header :focus-visible {
   gap: 8px;
 }
 .hero-note span:before {
-  content: "✓";
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url('../icons/check.svg') center / contain no-repeat;
   color: var(--yellow);
 }
 .hero-visual {
@@ -428,7 +449,13 @@ header :focus-visible {
   text-transform: uppercase;
 }
 .service-strip a:before {
-  content: "+";
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url('../icons/plus.svg') center / contain no-repeat;
   color: var(--yellow);
   margin-right: 13px;
 }
@@ -522,7 +549,13 @@ header :focus-visible {
   gap: 15px;
 }
 .check-list li:before {
-  content: "✓";
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url('../icons/check.svg') center / contain no-repeat;
   font-weight: 700;
   color: #718100;
 }
@@ -666,14 +699,26 @@ header :focus-visible {
   list-style: none;
 }
 .faq summary:after {
-  content: "+";
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url('../icons/plus.svg') center / contain no-repeat;
   position: absolute;
   right: 4px;
   font-size: 1.5rem;
   top: 12px;
 }
 .faq[open] summary:after {
-  content: "−";
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url('../icons/minus.svg') center / contain no-repeat;
 }
 .faq p {
   color: var(--muted);
@@ -1124,11 +1169,13 @@ textarea[aria-invalid="true"] {
     grid-template-columns: 1fr;
   }
   .service-card {
-    min-height: 260px;
-    padding: 28px;
+    min-height: 0;
+    padding: 18px 20px;
   }
   .service-card .icon {
-    margin-bottom: 22px;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 12px;
   }
   .split {
     gap: 32px;
@@ -1212,3 +1259,19 @@ textarea[aria-invalid="true"] {
   }
 }
 
+
+/* Compact controls and consistent SVG sizing. */
+@media(max-width:600px){.nav-bar{gap:12px}}
+@media(max-width:380px){.menu-label{display:none}.menu-toggle{min-width:44px;justify-content:center;padding:10px}.brand-name{font-size:.8rem}.brand-name small{letter-spacing:.22em}}
+.ui-icon{display:inline-block;width:1.1em;height:1.1em;flex-shrink:0;vertical-align:-.16em}
+.menu-toggle{align-items:center;gap:8px}
+.nav-services[open] summary:after{transform:rotate(180deg)}
+.faq summary:after{top:23px;font-size:1.1rem}
+.hero-note span:before{width:14px;height:14px}
+.check-list li:before{margin-top:.3em}
+.service-strip a{display:inline-flex;align-items:center}
+.main-nav{gap:28px;line-height:1.4}
+.main-nav>.button{color:var(--navy);white-space:nowrap}
+@media(max-width:1100px) and (min-width:851px){.main-nav{gap:20px}}
+@media(max-width:850px){.menu-toggle{display:inline-flex}.main-nav{gap:0}.main-nav>a:not(.button),.nav-services summary{justify-content:flex-start;min-height:48px}.dropdown{top:auto}}
+@media(max-width:600px){.service-grid{gap:12px}.service-card h3{font-size:1.2rem;margin-bottom:8px;max-width:none}.service-card p{font-size:.9375rem;line-height:1.45;margin-bottom:12px}.service-card .card-link{font-size:.8125rem;min-height:24px}.service-card.cta-card .eyebrow{font-size:.65rem;margin-bottom:12px}.service-card.cta-card h3{font-size:1.45rem}.service-card.cta-card h3 br{display:none}.section{padding:44px 0}.feature{padding-top:20px}.feature-grid{gap:15px}}

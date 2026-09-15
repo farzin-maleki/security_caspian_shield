@@ -24,6 +24,7 @@ dist/                         # Complete website; deploy this directory
     images/team.jpg
     images/site-officer.jpg
     images/premises.jpg
+    icons/                    # Local SVG interface icons (no external dependency)
 preview.cjs                   # Optional dependency-free local server
 ```
 
