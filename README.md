@@ -1,2 +1,57 @@
-# security_caspian_shield
+# Security Caspian Shield Ltd
 
+A responsive corporate website using semantic HTML, external CSS and vanilla JavaScript. No frameworks, dependencies or build step.
+
+## Structure
+
+```text
+dist/                         # Complete website; deploy this directory
+  index.html
+  about.html
+  services.html
+  security-guard.html
+  mobile-patrol.html
+  door-supervisor.html
+  event-security.html
+  construction-security.html
+  contact.html
+  quote.html
+  assets/
+    css/styles.css            # Brand tokens, components, responsive rules
+    js/data.js                # Company contacts and reusable service data
+    js/site.js                # Shared navigation/footer, cards, form behaviour
+    images/logo.png           # Supplied original logo
+    images/team.jpg
+    images/site-officer.jpg
+    images/premises.jpg
+preview.cjs                   # Optional dependency-free local server
+```
+
+Open `dist/index.html` directly, or run `node preview.cjs` and visit http://127.0.0.1:8080. Every page is a separate HTML document with its own title, description and main content. Shared components load through deferred scripts. No client-side router is used. Upload the contents of `dist` to a static host.
+
+## Editing
+
+- Colours, typography and spacing: `dist/assets/css/styles.css`.
+- Contact details and shared service cards/options: `dist/assets/js/data.js`.
+- Shared navigation/footer and interactions: `dist/assets/js/site.js`.
+- Page-specific content: the separate HTML files. Detailed service prose is also retained in the data file for reuse; keep it aligned when editing.
+
+## Quote requests
+
+The form validates required fields, email format and phone length, supports service preselection, and shows an enquiry preview. Visitors choose email or WhatsApp, review the prepared message and send it themselves. The site never claims delivery. There is no backend inbox or automatic mail delivery, and no analytics or browser storage of personal details. An email application is required for mailto links. No enquiry was sent during testing.
+
+## Content sources
+
+Company name, logo, services and visual direction were supplied by the user.
+
+Profile: https://www.instagram.com/security_caspian_shield/
+
+The profile displayed GLJ Safeguard Ltd, with older Aras Security posts. The user confirmed previous branding and authorised use of profile content. Its bio includes “Protecting your peace of mind”, Door Supervisors, Retail Security, Events Security and CP Security. No unverified staff names, accreditations, company statistics or operating-region claims have been added.
+
+Photographs saved locally:
+
+- `team.jpg`: https://www.instagram.com/security_caspian_shield/p/DJGn9Mmgxpx/ (1 May 2025)
+- `site-officer.jpg`: https://www.instagram.com/security_caspian_shield/p/DIM1OZhAXlk/ (8 April 2025)
+- `premises.jpg`: https://www.instagram.com/security_caspian_shield/p/DILiP6bAkQN/ (8 April 2025)
+
+The premises-sign photograph supplies 07532 817 131 and info@arassecurity.co.uk, together with a WhatsApp symbol. The number is normalised to +44 7532 817131. These are historic public contacts the user authorised using; current reachability and WhatsApp availability have not been independently verified. Update phone, whatsapp and email in data.js when replacement contacts are available. Photographs retain original branding; the About page identifies them as archive imagery.

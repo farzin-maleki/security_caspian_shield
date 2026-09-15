@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#081725" />
+    <title>Get a quote | Security Caspian Shield Ltd</title>
+    <meta
+      name="description"
+      content="Request a tailored security quote. Share your name, contact details, service and requirements with Security Caspian Shield Ltd."
+    />
+    <link rel="icon" type="image/png" href="assets/images/logo.png" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script src="assets/js/data.js" defer></script>
+    <script src="assets/js/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-header></div>
+    <noscript
+      ><nav class="noscript" aria-label="Page navigation">
+        <a href="index.html">Home</a> · <a href="about.html">About us</a> ·
+        <a href="services.html">Services</a> ·
+        <a href="contact.html">Contact us</a> ·
+        <a href="quote.html">Get a quote</a>
+        <p>
+          Enable JavaScript for the interactive menu and quote form. Call +44
+          7532 817131 or email info@arassecurity.co.uk.
+        </p>
+      </nav></noscript
+    >
+    <main id="main">
+      <section class="page-hero">
+        <div class="wrap">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a><span>/</span
+            ><span aria-current="page">Get a quote</span>
+          </nav>
+          <div class="eyebrow">SECURITY CASPIAN SHIELD LTD</div>
+          <h1>Your security.<br />Let’s make a plan.</h1>
+          <p>
+            Tell us a little about what you need. Prepare your enquiry, then
+            send it directly by email or WhatsApp.
+          </p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="wrap contact-layout">
+          <aside class="contact-side">
+            <div class="eyebrow">TAILORED TO YOUR NEEDS</div>
+            <h2>The right protection<br />starts with you.</h2>
+            <p>
+              Share your requirements so we can discuss a security service that
+              suits your premises, event or project.
+            </p>
+            <ul class="check-list">
+              <li>Choose from five security services</li>
+              <li>Include your location and dates</li>
+              <li>Discuss a plan before committing</li>
+            </ul>
+            <h3>Prefer to talk?</h3>
+            <p>
+              <a class="text-link" href="contact.html"
+                >See our contact details ↗</a
+              >
+            </p>
+          </aside>
+          <div class="form-panel">
+            <h2>Request your quote.</h2>
+            <p>All fields are required.</p>
+            <form id="quote-form" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Full name</label
+                  ><input
+                    id="name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    maxlength="100"
+                    aria-describedby="name-error"
+                  /><span class="error" id="name-error"></span>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone number</label
+                  ><input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                    required
+                    maxlength="30"
+                    placeholder="Include country code"
+                    aria-describedby="phone-error"
+                  /><span class="error" id="phone-error"></span>
+                </div>
+                <div class="field full">
+                  <label for="email">Email address</label
+                  ><input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    maxlength="254"
+                    aria-describedby="email-error"
+                  /><span class="error" id="email-error"></span>
+                </div>
+                <div class="field full">
+                  <label for="service">Service needed</label
+                  ><select
+                    id="service"
+                    name="service"
+                    required
+                    aria-describedby="service-error"
+                  >
+                    <option value="">Select a service</option></select
+                  ><span class="error" id="service-error"></span>
+                </div>
+                <div class="field full">
+                  <label for="message">How can we help?</label
+                  ><textarea
+                    id="message"
+                    name="message"
+                    required
+                    maxlength="2500"
+                    placeholder="Tell us about your location, dates, hours of cover and security requirements."
+                    aria-describedby="message-error"
+                  ></textarea
+                  ><span class="error" id="message-error"></span>
+                </div>
+              </div>
+              <p class="form-note">
+                Your details stay on this page until you choose to open an email
+                or WhatsApp message. Review and send your enquiry in your chosen
+                app. Please avoid including confidential security information.
+              </p>
+              <button class="button button-dark" type="submit">
+                Prepare my enquiry <span aria-hidden="true">↗</span>
+              </button>
+              <div
+                id="form-status"
+                class="form-status"
+                role="status"
+                aria-live="polite"
+              ></div>
+            </form>
+            <div
+              id="enquiry-preview"
+              class="enquiry-preview"
+              hidden
+              tabindex="-1"
+            >
+              <h3>Review your enquiry</h3>
+              <pre></pre>
+              <div class="actions">
+                <a class="button button-dark" data-send-email>Open email ↗</a
+                ><a
+                  class="button"
+                  data-send-whatsapp
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Open WhatsApp ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div data-footer></div>
+  </body>
+</html>
