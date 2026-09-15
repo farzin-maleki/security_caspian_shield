@@ -5,8 +5,8 @@ A responsive corporate website using semantic HTML, external CSS and vanilla Jav
 ## Structure
 
 ```text
-dist/                         # Complete website; deploy this directory
-  index.html
+index.html                    # Homepage at the project root
+dist/                         # Supporting pages and shared assets
   about.html
   services.html
   security-guard.html
@@ -26,15 +26,20 @@ dist/                         # Complete website; deploy this directory
     images/premises.jpg
     icons/                    # Local SVG interface icons (no external dependency)
 preview.cjs                   # Optional dependency-free local server
+stage-site.cjs                # Optional file-copy step for Sites publication
+build/                        # Ignored publication copy, generated when needed
 ```
 
-Open `dist/index.html` directly, or run `node preview.cjs` and visit http://127.0.0.1:8080. Every page is a separate HTML document with its own title, description and main content. Shared components load through deferred scripts. No client-side router is used. Upload the contents of `dist` to a static host.
+Open `index.html` directly, or run `node preview.cjs` and visit http://127.0.0.1:8080. Every page is a separate HTML document with its own title, description and main content. Shared components load through deferred scripts. No client-side router is used. For ordinary static hosting, upload the root `index.html` and the `dist` folder together, preserving this layout. Do not upload repository metadata or development scripts.
+
+Sites publication uses `node stage-site.cjs` to copy those public files into the ignored `build` directory before packaging. This only copies files; no compilation, framework or installed dependencies are needed. The authored homepage exists only at the project root, not in `dist`.
 
 ## Editing
 
 - Colours, typography and spacing: `dist/assets/css/styles.css`.
 - Contact details and shared service cards/options: `dist/assets/js/data.js`.
 - Shared navigation/footer and interactions: `dist/assets/js/site.js`.
+- Instagram, WhatsApp and telephone links use local SVG icons with accessible names and hover titles. Their targets still come from `data.js`.
 - Page-specific content: the separate HTML files. Detailed service prose is also retained in the data file for reuse; keep it aligned when editing.
 
 ## Quote requests

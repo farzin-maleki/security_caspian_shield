@@ -1261,6 +1261,26 @@ textarea[aria-invalid="true"] {
 
 
 /* Compact controls and consistent SVG sizing. */
+.social-link, .footer-col a.social-link, .contact-option a.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
+  text-decoration: none;
+}
+.social-icon {display: block; width: 22px; height: 22px; background: currentColor; mask: var(--social-icon) center / contain no-repeat;}
+.social-icon-instagram {--social-icon: url('../icons/instagram.svg');}
+.social-icon-whatsapp {--social-icon: url('../icons/whatsapp.svg');}
+.social-icon-telephone {--social-icon: url('../icons/telephone.svg');}
+.social-link:hover {color: #657200; background: var(--yellow);}
+.site-footer .social-link:hover, .utility .social-link:hover {color: var(--navy);}
+.utility {padding: 2px 0;}
 @media(max-width:600px){.nav-bar{gap:12px}}
 @media(max-width:380px){.menu-label{display:none}.menu-toggle{min-width:44px;justify-content:center;padding:10px}.brand-name{font-size:.8rem}.brand-name small{letter-spacing:.22em}}
 .ui-icon{display:inline-block;width:1.1em;height:1.1em;flex-shrink:0;vertical-align:-.16em}

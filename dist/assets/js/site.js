@@ -1,29 +1,191 @@
 /* Shared components and behaviour. Works on static hosting and file://. */
 (() => {
- 'use strict';
- const data=window.CASPIAN, file=location.pathname.split('/').pop()||'index.html';
- const paths={shield:'M12 3 3 6v6c0 5 9 9 9 9s9-4 9-9V6l-9-3Z M8 12l3 3 5-6',patrol:'m3 14 2-6h14l2 6v5h-3v-2H6v2H3v-5Z M3 13h18 M7 8l1-3h8l1 3 M7 15h1 M16 15h1',door:'M5 21V3h14v18 M3 21h18 M8 21V6l8-1v16 M12 13h1',event:'M4 21v-3c0-3 3-5 8-5s8 2 8 5v3 M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6 M3 10h3 M18 10h3',building:'M3 21h18 M5 21V5h9v16 M14 11h5v10 M8 8h3 M8 12h3 M8 16h3 M8 21v-2h3v2'};
- const icon=name=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${paths[name]||paths.shield}"/></svg>`;
- const brand=`<a class="brand" href="index.html" aria-label="Security Caspian Shield Ltd home"><img src="assets/images/logo.png" alt="" width="59" height="67"><span class="brand-name">CASPIAN SHIELD<small>SECURITY SERVICES</small></span></a>`;
- const link=(href,label)=>`<a href="${href}"${file===href?' aria-current="page"':''}>${label}</a>`;
- document.querySelector('[data-header]').innerHTML=`<div class="utility"><div class="wrap"><span>SECURITY CASPIAN SHIELD LTD &nbsp; / &nbsp; Protecting your peace of mind</span><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">Follow us on Instagram <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></div><header class="site-header"><div class="wrap nav-bar">${brand}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation"><span class="menu-label">Menu</span> <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><nav class="main-nav" id="main-navigation" aria-label="Main navigation">${link('index.html','Home')}${link('about.html','About us')}<details class="nav-services"><summary>Our services</summary><div class="dropdown">${link('services.html','All services')}${data.services.map(s=>link(s.id+'.html',s.name)).join('')}</div></details>${link('contact.html','Contact us')}<a class="button" href="quote.html"${file==='quote.html'?' aria-current="page"':''}>Get a quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a></nav></div></header>`;
- document.querySelector('[data-footer]').innerHTML=`<footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand">${brand}<p>Protecting your people, your property and your peace of mind.</p></div><div class="footer-col"><h3>COMPANY</h3><a href="about.html">About us</a><a href="services.html">Our services</a><a href="contact.html">Contact us</a><a href="quote.html">Get a quote</a></div><div class="footer-col"><h3>OUR SERVICES</h3>${data.services.map(s=>`<a href="${s.id}.html">${s.name}</a>`).join('')}</div><div class="footer-col"><h3>LET’S TALK</h3><a href="tel:${data.phone.replace(/\s/g,'')}">${data.phone}</a><a href="https://wa.me/${data.whatsapp.replace(/\D/g,'')}" target="_blank" rel="noopener noreferrer">Message on WhatsApp <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">Instagram <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} Security Caspian Shield Ltd. All rights reserved.</span><a href="#main">Back to top <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div></div></footer>`;
- const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.main-nav'),dropdown=document.querySelector('.nav-services');
- function closeNav(){toggle.setAttribute('aria-expanded','false');nav.classList.remove('is-open');dropdown.open=false;}
- toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));nav.classList.toggle('is-open',open);});
- document.addEventListener('keydown',e=>{if(e.key==='Escape'){const open=nav.classList.contains('is-open');const serviceOpen=dropdown.open;closeNav();if(open)toggle.focus();else if(serviceOpen)dropdown.querySelector('summary').focus();}});
- document.addEventListener('click',e=>{if(!e.target.closest('.nav-services'))dropdown.open=false;if(!e.target.closest('.site-header'))closeNav();});
- matchMedia('(min-width:851px)').addEventListener('change',closeNav);
- document.querySelectorAll('[data-services]').forEach(el=>{el.innerHTML=data.services.filter(s=>s.id!==el.dataset.exclude).map((s,i)=>`<a class="service-card" href="${s.id}.html"><div><span class="card-number">0${i+1}</span>${icon(s.icon)}</div><h3>${s.name}</h3><p>${s.description}</p><span class="card-link">Explore service <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span></a>`).join('')+(el.dataset.cta!==undefined?`<a class="service-card cta-card" href="quote.html"><span class="eyebrow">YOUR SECURITY, YOUR WAY</span><h3>Find your protection.</h3><p>Tell us what you need to protect.</p><span class="card-link">Get a tailored quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span></a>`:'');});
- document.querySelectorAll('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));
- document.querySelectorAll('[data-service-strip]').forEach(el=>el.innerHTML=data.services.map(s=>`<a href="${s.id}.html">${s.name}</a>`).join(''));
- document.querySelectorAll('[data-cta]:not([data-services])').forEach(el=>el.innerHTML=`<section class="cta-band"><div class="wrap"><div><h2>Let’s talk about your security.</h2><p>Tell us what you need. We’ll take it from there.</p></div><a class="button button-dark" href="quote.html">Get a tailored quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a></div></section>`);
- document.querySelectorAll('[data-contact-options]').forEach(el=>el.innerHTML=`<div class="contact-option"><h3>Call our team</h3><p>Discuss your requirements.</p><a href="tel:${data.phone.replace(/\s/g,'')}">${data.phone}</a></div><div class="contact-option"><h3>WhatsApp</h3><p>Send us a message.</p><a href="https://wa.me/${data.whatsapp.replace(/\D/g,'')}" target="_blank" rel="noopener noreferrer">Message us on WhatsApp <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div><div class="contact-option"><h3>Email us</h3><a href="mailto:${data.email}">${data.email}</a></div><div class="contact-option"><h3>Find us on Instagram</h3><p>Team photos and updates.</p><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">@security_caspian_shield <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>`);
- const form=document.querySelector('#quote-form');
- if(form){const select=form.elements.service;data.services.forEach(s=>select.add(new Option(s.name,s.id)));const selected=new URLSearchParams(location.search).get('service');if(data.services.some(s=>s.id===selected))select.value=selected;
- const labels={name:'your name',phone:'a phone number with 7–15 digits',email:'a valid email address',service:'a service',message:'a few details about your requirements'};
- function validate(field){let message='';const value=field.value.trim();if(!value)message=`Please enter ${labels[field.name]}.`;else if(field.name==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))message='Please enter a valid email address.';else if(field.name==='phone'&&(!/^[+\d\s().-]+$/.test(value)||value.replace(/\D/g,'').length<7||value.replace(/\D/g,'').length>15))message='Please enter a phone number with 7–15 digits.';field.setAttribute('aria-invalid',String(Boolean(message)));document.querySelector('#'+field.name+'-error').textContent=message;return !message;}
- const fields=['name','phone','email','service','message'].map(n=>form.elements[n]);fields.forEach(field=>{field.addEventListener('blur',()=>{if(field.value||field.getAttribute('aria-invalid')==='true')validate(field);});field.addEventListener('input',()=>{if(field.getAttribute('aria-invalid')==='true')validate(field);document.querySelector('#enquiry-preview').hidden=true;document.querySelector('#form-status').textContent='';});});
- form.addEventListener('submit',event=>{event.preventDefault();const invalid=fields.filter(field=>!validate(field));if(invalid.length){document.querySelector('#form-status').textContent='Please check the highlighted fields.';invalid[0].focus();return;}const service=data.services.find(s=>s.id===select.value).name;const body=`Quote request — ${data.name}\n\nName: ${form.elements.name.value.trim()}\nPhone: ${form.elements.phone.value.trim()}\nEmail: ${form.elements.email.value.trim()}\nService: ${service}\n\nDetails:\n${form.elements.message.value.trim()}`;const preview=document.querySelector('#enquiry-preview');preview.hidden=false;preview.querySelector('pre').textContent=body;preview.querySelector('[data-send-email]').href=`mailto:${data.email}?subject=${encodeURIComponent('Security quote request: '+service)}&body=${encodeURIComponent(body)}`;preview.querySelector('[data-send-whatsapp]').href=`https://wa.me/${data.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent(body)}`;document.querySelector('#form-status').textContent='Enquiry ready. Choose email or WhatsApp to review and send. Nothing has been sent yet.';preview.focus();});}
-})();
+  "use strict";
+  // Resolve shared links from this script, independent of page depth or hosting folder.
+  const siteRoot = new URL("../../../", document.currentScript.src);
+  const assetRoot = new URL("dist/assets/", siteRoot);
+  const data = window.CASPIAN,
+    file = (location.pathname.split("/").pop() || "index.html").replace(/^(\w[\w-]*)$/, "$1.html");
+  const paths = {
+    shield: "M12 3 3 6v6c0 5 9 9 9 9s9-4 9-9V6l-9-3Z M8 12l3 3 5-6",
+    patrol:
+      "m3 14 2-6h14l2 6v5h-3v-2H6v2H3v-5Z M3 13h18 M7 8l1-3h8l1 3 M7 15h1 M16 15h1",
+    door: "M5 21V3h14v18 M3 21h18 M8 21V6l8-1v16 M12 13h1",
+    event:
+      "M4 21v-3c0-3 3-5 8-5s8 2 8 5v3 M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6 M3 10h3 M18 10h3",
+    building:
+      "M3 21h18 M5 21V5h9v16 M14 11h5v10 M8 8h3 M8 12h3 M8 16h3 M8 21v-2h3v2",
+  };
+  const icon = (name) =>
+    `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${paths[name] || paths.shield}"/></svg>`;
+  const brand = `<a class="brand" href="index.html" aria-label="Security Caspian Shield Ltd home"><img src="assets/images/logo.png" alt="" width="59" height="67"><span class="brand-name">CASPIAN SHIELD<small>SECURITY SERVICES</small></span></a>`;
+  const link = (href, label) =>
+    `<a href="${href}"${file === href ? ' aria-current="page"' : ""}>${label}</a>`;
+  document.querySelector("[data-header]").innerHTML =
+    `<div class="utility"><div class="wrap"><span>SECURITY CASPIAN SHIELD LTD &nbsp; / &nbsp; Protecting your peace of mind</span><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">Follow us on Instagram <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></div><header class="site-header"><div class="wrap nav-bar">${brand}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation"><span class="menu-label">Menu</span> <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><nav class="main-nav" id="main-navigation" aria-label="Main navigation">${link("index.html", "Home")}${link("about.html", "About us")}<details class="nav-services"><summary>Our services</summary><div class="dropdown">${link("services.html", "All services")}${data.services.map((s) => link(s.id + ".html", s.name)).join("")}</div></details>${link("contact.html", "Contact us")}<a class="button" href="quote.html"${file === "quote.html" ? ' aria-current="page"' : ""}>Get a quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a></nav></div></header>`;
+  document.querySelector("[data-footer]").innerHTML =
+    `<footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand">${brand}<p>Protecting your people, your property and your peace of mind.</p></div><div class="footer-col"><h3>COMPANY</h3><a href="about.html">About us</a><a href="services.html">Our services</a><a href="contact.html">Contact us</a><a href="quote.html">Get a quote</a></div><div class="footer-col"><h3>OUR SERVICES</h3>${data.services.map((s) => `<a href="${s.id}.html">${s.name}</a>`).join("")}</div><div class="footer-col"><h3>LET’S TALK</h3><a href="tel:${data.phone.replace(/\s/g, "")}">${data.phone}</a><a href="https://wa.me/${data.whatsapp.replace(/\D/g, "")}" target="_blank" rel="noopener noreferrer">Message on WhatsApp <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">Instagram <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} Security Caspian Shield Ltd. All rights reserved.</span><a href="#main">Back to top <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div></div></footer>`;
+  const toggle = document.querySelector(".menu-toggle"),
+    nav = document.querySelector(".main-nav"),
+    dropdown = document.querySelector(".nav-services");
+  function closeNav() {
+    toggle.setAttribute("aria-expanded", "false");
+    nav.classList.remove("is-open");
+    dropdown.open = false;
+  }
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("is-open", open);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const open = nav.classList.contains("is-open");
+      const serviceOpen = dropdown.open;
+      closeNav();
+      if (open) toggle.focus();
+      else if (serviceOpen) dropdown.querySelector("summary").focus();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".nav-services")) dropdown.open = false;
+    if (!e.target.closest(".site-header")) closeNav();
+  });
+  matchMedia("(min-width:851px)").addEventListener("change", closeNav);
+  document.querySelectorAll("[data-services]").forEach((el) => {
+    el.innerHTML =
+      data.services
+        .filter((s) => s.id !== el.dataset.exclude)
+        .map(
+          (s, i) =>
+            `<a class="service-card" href="${s.id}.html"><div>${icon(s.icon)}</div><h3>${s.name}</h3><p>${s.description}</p><span class="card-link">Explore service <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span></a>`,
+        )
+        .join("") +
+      (el.dataset.cta !== undefined
+        ? `<a class="service-card cta-card" href="quote.html"><span class="eyebrow">YOUR SECURITY, YOUR WAY</span><h3>Find your protection.</h3><p>Tell us what you need to protect.</p><span class="card-link">Get a tailored quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span></a>`
+        : "");
+  });
+  document
+    .querySelectorAll("[data-icon]")
+    .forEach((el) => (el.innerHTML = icon(el.dataset.icon)));
+  document
+    .querySelectorAll("[data-service-strip]")
+    .forEach(
+      (el) =>
+        (el.innerHTML = data.services
+          .map((s) => `<a href="${s.id}.html">${s.name}</a>`)
+          .join("")),
+    );
+  document
+    .querySelectorAll("[data-cta]:not([data-services])")
+    .forEach(
+      (el) =>
+        (el.innerHTML = `<section class="cta-band"><div class="wrap"><div><h2>Let’s talk about your security.</h2><p>Tell us what you need. We’ll take it from there.</p></div><a class="button button-dark" href="quote.html">Get a tailored quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a></div></section>`),
+    );
+  document
+    .querySelectorAll("[data-contact-options]")
+    .forEach(
+      (el) =>
+        (el.innerHTML = `<div class="contact-option"><h3>Call our team</h3><p>Discuss your requirements.</p><a href="tel:${data.phone.replace(/\s/g, "")}">${data.phone}</a></div><div class="contact-option"><h3>WhatsApp</h3><p>Send us a message.</p><a href="https://wa.me/${data.whatsapp.replace(/\D/g, "")}" target="_blank" rel="noopener noreferrer">Message us on WhatsApp <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div><div class="contact-option"><h3>Email us</h3><a href="mailto:${data.email}">${data.email}</a></div><div class="contact-option"><h3>Find us on Instagram</h3><p>Team photos and updates.</p><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">@security_caspian_shield <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>`),
+    );
+  const form = document.querySelector("#quote-form");
+  if (form) {
+    const select = form.elements.service;
+    data.services.forEach((s) => select.add(new Option(s.name, s.id)));
+    const selected = new URLSearchParams(location.search).get("service");
+    if (data.services.some((s) => s.id === selected)) select.value = selected;
+    const labels = {
+      name: "your name",
+      phone: "a phone number with 7–15 digits",
+      email: "a valid email address",
+      service: "a service",
+      message: "a few details about your requirements",
+    };
+    function validate(field) {
+      let message = "";
+      const value = field.value.trim();
+      if (!value) message = `Please enter ${labels[field.name]}.`;
+      else if (
+        field.name === "email" &&
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+      )
+        message = "Please enter a valid email address.";
+      else if (
+        field.name === "phone" &&
+        (!/^[+\d\s().-]+$/.test(value) ||
+          value.replace(/\D/g, "").length < 7 ||
+          value.replace(/\D/g, "").length > 15)
+      )
+        message = "Please enter a phone number with 7–15 digits.";
+      field.setAttribute("aria-invalid", String(Boolean(message)));
+      document.querySelector("#" + field.name + "-error").textContent = message;
+      return !message;
+    }
+    const fields = ["name", "phone", "email", "service", "message"].map(
+      (n) => form.elements[n],
+    );
+    fields.forEach((field) => {
+      field.addEventListener("blur", () => {
+        if (field.value || field.getAttribute("aria-invalid") === "true")
+          validate(field);
+      });
+      field.addEventListener("input", () => {
+        if (field.getAttribute("aria-invalid") === "true") validate(field);
+        document.querySelector("#enquiry-preview").hidden = true;
+        document.querySelector("#form-status").textContent = "";
+      });
+    });
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const invalid = fields.filter((field) => !validate(field));
+      if (invalid.length) {
+        document.querySelector("#form-status").textContent =
+          "Please check the highlighted fields.";
+        invalid[0].focus();
+        return;
+      }
+      const service = data.services.find((s) => s.id === select.value).name;
+      const body = `Quote request — ${data.name}\n\nName: ${form.elements.name.value.trim()}\nPhone: ${form.elements.phone.value.trim()}\nEmail: ${form.elements.email.value.trim()}\nService: ${service}\n\nDetails:\n${form.elements.message.value.trim()}`;
+      const preview = document.querySelector("#enquiry-preview");
+      preview.hidden = false;
+      preview.querySelector("pre").textContent = body;
+      preview.querySelector("[data-send-email]").href =
+        `mailto:${data.email}?subject=${encodeURIComponent("Security quote request: " + service)}&body=${encodeURIComponent(body)}`;
+      preview.querySelector("[data-send-whatsapp]").href =
+        `https://wa.me/${data.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(body)}`;
+      document.querySelector("#form-status").textContent =
+        "Enquiry ready. Choose email or WhatsApp to review and send. Nothing has been sent yet.";
+      preview.focus();
+    });
+  }
 
+  // Root homepage and nested service pages share one navigation implementation.
+  document.querySelectorAll('a[href]').forEach(anchor => {
+    const href = anchor.getAttribute('href');
+    if (/^[a-z-]+\.html(?:[?#]|$)/i.test(href)) {
+      anchor.href = new URL(href.startsWith('index.html') ? href : 'dist/' + href, siteRoot).href;
+    }
+  });
+  document.querySelectorAll('[data-header] img, [data-footer] img').forEach(img => {
+    img.src = new URL('images/logo.png', assetRoot).href;
+  });
+
+  // Icon-only contact links keep descriptive names for assistive technology.
+  document.querySelectorAll('a[href], a[data-send-whatsapp]').forEach(anchor => {
+    const href = anchor.getAttribute('href') || '';
+    let type, label;
+    if (href.startsWith('tel:')) {
+      type = 'telephone'; label = 'Call ' + data.phone;
+    } else if (href.startsWith('https://wa.me/') || anchor.hasAttribute('data-send-whatsapp')) {
+      type = 'whatsapp'; label = anchor.hasAttribute('data-send-whatsapp') ? 'Open quote in WhatsApp' : 'Message us on WhatsApp';
+    } else if (href.startsWith('https://www.instagram.com/')) {
+      type = 'instagram'; label = 'Visit Security Caspian Shield on Instagram';
+    }
+    if (!type) return;
+    anchor.classList.remove('button', 'text-link');
+    anchor.classList.add('social-link');
+    anchor.setAttribute('aria-label', label);
+    anchor.setAttribute('title', label);
+    anchor.innerHTML = '<span class="social-icon social-icon-' + type + '" aria-hidden="true"></span>';
+  });
+})();
