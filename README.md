@@ -18,8 +18,11 @@ dist/                         # Supporting pages and shared assets
   quote.html
   assets/
     css/styles.css            # Brand tokens, components, responsive rules
+    css/motion.css            # Headline, image, menu and hover animations
     js/data.js                # Company contacts and reusable service data
     js/site.js                # Shared navigation/footer, cards, form behaviour
+    js/motion.js              # Heading line wrappers and one-time scroll reveals
+    fonts/                    # Local Inter and Manrope WOFF2 files and licenses
     images/logo.png           # Supplied original logo
     images/team.jpg
     images/site-officer.jpg
@@ -37,6 +40,8 @@ Sites publication uses `node stage-site.cjs` to copy those public files into the
 ## Editing
 
 - Colours, typography and spacing: `dist/assets/css/styles.css`.
+- Local fonts and their licenses: `dist/assets/fonts/`. Inter is used for body and small text; Manrope is used for headings.
+- Page entrance and hover effects: `dist/assets/css/motion.css`. Headlines reveal in sequence, photographs uncover horizontally, and cards enter in short groups. `dist/assets/js/motion.js` handles heading wrappers and one-time scroll reveals. Reduced-motion preferences disable these effects; keyboard focus cancels active reveals so controls remain accessible.
 - Contact details and shared service cards/options: `dist/assets/js/data.js`.
 - Shared navigation/footer and interactions: `dist/assets/js/site.js`.
 - Instagram, WhatsApp and telephone links use local SVG icons with accessible names and hover titles. Their targets still come from `data.js`.

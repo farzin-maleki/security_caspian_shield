@@ -51,7 +51,7 @@
     if (!e.target.closest(".nav-services")) dropdown.open = false;
     if (!e.target.closest(".site-header")) closeNav();
   });
-  matchMedia("(min-width:851px)").addEventListener("change", closeNav);
+  matchMedia("(min-width:961px)").addEventListener("change", closeNav);
   document.querySelectorAll("[data-services]").forEach((el) => {
     el.innerHTML =
       data.services
