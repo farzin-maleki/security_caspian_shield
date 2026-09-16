@@ -209,20 +209,9 @@ header :focus-visible {
   outline-color: var(--yellow);
 }
 /* 2. Shared navigation */
-.utility {
-  background: #050f18;
-  color: #bdc8ce;
-  font-size: 0.75rem;
-  padding: 7px 0;
-}
-.utility .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.utility a {
-  color: #e5eaed;
-}
+
+
+
 .site-header {
   background: var(--navy);
   color: white;
@@ -981,9 +970,7 @@ textarea[aria-invalid="true"] {
   }
 }
 @media (max-width: 850px) {
-  .utility {
-    display: none;
-  }
+
   .nav-bar {
     min-height: 82px;
   }
@@ -1279,8 +1266,8 @@ textarea[aria-invalid="true"] {
 .social-icon-whatsapp {--social-icon: url('../icons/whatsapp.svg');}
 .social-icon-telephone {--social-icon: url('../icons/telephone.svg');}
 .social-link:hover {color: #657200; background: var(--yellow);}
-.site-footer .social-link:hover, .utility .social-link:hover {color: var(--navy);}
-.utility {padding: 2px 0;}
+.site-footer .social-link:hover {color: var(--navy);}
+
 @media(max-width:600px){.nav-bar{gap:12px}}
 @media(max-width:380px){.menu-label{display:none}.menu-toggle{min-width:44px;justify-content:center;padding:10px}.brand-name{font-size:.8rem}.brand-name small{letter-spacing:.22em}}
 .ui-icon{display:inline-block;width:1.1em;height:1.1em;flex-shrink:0;vertical-align:-.16em}
