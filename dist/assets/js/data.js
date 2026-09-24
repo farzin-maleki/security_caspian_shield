@@ -3,19 +3,18 @@ window.CASPIAN = {
   name: "Security Caspian Shield Ltd",
   phone: "+44 7532 817131",
   whatsapp: "+44 7532 817131",
-  email: "info@arassecurity.co.uk",
+  email: "security@caspianshield.com",
   instagram: "https://www.instagram.com/security_caspian_shield/",
   services: [
     {
       id: "security-guard",
       name: "Security Guard",
       short: "A reassuring presence. A watchful eye.",
-      description:
-        "Professional guarding for people and premises.",
+      description: "Professional guarding for people and premises.",
       heading: "A visible presence.\nLasting peace of mind.",
       intro:
         "A professional on-site presence to protect your premises and support daily operations.",
-      image: "team.jpg",
+      image: "team.webp",
       icon: "shield",
       suitable:
         "Offices, retail premises, residential buildings and commercial properties",
@@ -52,12 +51,11 @@ window.CASPIAN = {
       id: "mobile-patrol",
       name: "Mobile Patrol",
       short: "Protection that keeps moving.",
-      description:
-        "Scheduled visits to protect your property.",
+      description: "Scheduled visits to protect your property.",
       heading: "Your property.\nOur watchful eye.",
       intro:
         "Regular security visits, scheduled around your property and operating hours.",
-      image: "premises.jpg",
+      image: "premises.webp",
       icon: "patrol",
       suitable:
         "Business parks, vacant properties, commercial premises and multiple sites",
@@ -94,12 +92,11 @@ window.CASPIAN = {
       id: "door-supervisor",
       name: "Door Supervisor",
       short: "A warm welcome. A secure entrance.",
-      description:
-        "Safe, welcoming entry management.",
+      description: "Safe, welcoming entry management.",
       heading: "First impressions.\nSecurity that lasts.",
       intro:
         "A professional welcome, controlled access and calm support at your entrance.",
-      image: "team.jpg",
+      image: "team.webp",
       icon: "door",
       suitable:
         "Hospitality venues, private functions, entertainment venues and receptions",
@@ -136,12 +133,11 @@ window.CASPIAN = {
       id: "event-security",
       name: "Event Security",
       short: "Your event. Everyone’s peace of mind.",
-      description:
-        "Security for a safe, well-run event.",
+      description: "Security for a safe, well-run event.",
       heading: "A memorable event.\nFor all the right reasons.",
       intro:
         "Keep arrivals, access and departures organised with security tailored to your event.",
-      image: "team.jpg",
+      image: "team.webp",
       icon: "event",
       suitable:
         "Corporate events, private celebrations, community events and live entertainment",
@@ -178,12 +174,11 @@ window.CASPIAN = {
       id: "construction-security",
       name: "Construction Site Security",
       short: "Protect your site. Keep work moving.",
-      description:
-        "Protect your site, equipment and access points.",
+      description: "Protect your site, equipment and access points.",
       heading: "Secure your site.\nProtect your progress.",
       intro:
         "Protect access points, equipment and materials throughout your project.",
-      image: "site-officer.jpg",
+      image: "site-officer.webp",
       icon: "building",
       suitable:
         "Active construction projects, refurbishment sites and development sites",

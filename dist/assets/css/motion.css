@@ -86,7 +86,7 @@
   .button .ui-icon, .card-link .ui-icon, .text-link .ui-icon {
     transition: transform .3s var(--motion-ease);
   }
-  .nav-services summary:after { transition: transform .2s ease; }
+  .nav-services summary .nav-chevron { transition: transform .2s ease; }
   .main-nav > a:not(.button), .nav-services summary { transition: color .2s ease; }
   .hero-copy > .actions:focus-within, .page-hero .actions:focus-within { animation: none; }
 }

@@ -198,13 +198,12 @@ p {
   flex-wrap: wrap;
 }
 .icon {
+  display: inline-block;
   width: 30px;
   height: 30px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  font-size: 30px;
+  line-height: 1;
+  text-align: center;
 }
 .skip-link {
   position: fixed;
@@ -226,8 +225,6 @@ header :focus-visible {
   outline-color: var(--yellow);
 }
 /* 2. Shared navigation */
-
-
 
 .site-header {
   background: var(--navy);
@@ -308,14 +305,11 @@ header :focus-visible {
 .nav-services summary::-webkit-details-marker {
   display: none;
 }
-.nav-services summary:after {
-  content: "";
+.nav-services summary .nav-chevron {
   display: inline-block;
   width: 1em;
   height: 1em;
   flex-shrink: 0;
-  background: currentColor;
-  mask: url('../icons/chevron.svg') center / contain no-repeat;
   margin-left: 8px;
   color: var(--yellow);
 }
@@ -386,14 +380,11 @@ header :focus-visible {
   align-items: center;
   gap: 8px;
 }
-.hero-note span:before {
-  content: "";
+.hero-note span > .list-icon {
   display: inline-block;
   width: 1em;
   height: 1em;
   flex-shrink: 0;
-  background: currentColor;
-  mask: url('../icons/check.svg') center / contain no-repeat;
   color: var(--yellow);
 }
 .hero-visual {
@@ -454,14 +445,11 @@ header :focus-visible {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.service-strip a:before {
-  content: "";
+.service-strip a > .list-icon {
   display: inline-block;
   width: 1em;
   height: 1em;
   flex-shrink: 0;
-  background: currentColor;
-  mask: url('../icons/plus.svg') center / contain no-repeat;
   color: var(--yellow);
   margin-right: 13px;
 }
@@ -554,15 +542,11 @@ header :focus-visible {
   display: flex;
   gap: 15px;
 }
-.check-list li:before {
-  content: "";
+.check-list li > .list-icon {
   display: inline-block;
   width: 1em;
   height: 1em;
   flex-shrink: 0;
-  background: currentColor;
-  mask: url('../icons/check.svg') center / contain no-repeat;
-  font-weight: 700;
   color: #718100;
 }
 .image-frame {
@@ -704,27 +688,24 @@ header :focus-visible {
   position: relative;
   list-style: none;
 }
-.faq summary:after {
-  content: "";
+.faq summary .faq-icon {
   display: inline-block;
   width: 1em;
   height: 1em;
   flex-shrink: 0;
-  background: currentColor;
-  mask: url('../icons/plus.svg') center / contain no-repeat;
   position: absolute;
   right: 4px;
   font-size: 1.5rem;
   top: 12px;
 }
-.faq[open] summary:after {
-  content: "";
+.faq summary .faq-collapse {
+  display: none;
+}
+.faq[open] summary .faq-expand {
+  display: none;
+}
+.faq[open] summary .faq-collapse {
   display: inline-block;
-  width: 1em;
-  height: 1em;
-  flex-shrink: 0;
-  background: currentColor;
-  mask: url('../icons/minus.svg') center / contain no-repeat;
 }
 .faq p {
   color: var(--muted);
@@ -987,7 +968,6 @@ textarea[aria-invalid="true"] {
   }
 }
 @media (max-width: 960px) {
-
   .nav-bar {
     min-height: 82px;
   }
@@ -1156,7 +1136,7 @@ textarea[aria-invalid="true"] {
     font-size: 0.62rem;
     letter-spacing: 0.03em;
   }
-  .service-strip a:before {
+  .service-strip a > .list-icon {
     margin-right: 6px;
   }
   .section {
@@ -1263,54 +1243,160 @@ textarea[aria-invalid="true"] {
   }
 }
 
-
 /* Compact controls and consistent SVG sizing. */
-.social-link, .footer-col a.social-link, .contact-option a.social-link {
+.social-link,
+.footer-col a.social-link,
+.contact-option a.social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
   border: 1px solid currentColor;
   border-radius: 50%;
   vertical-align: middle;
   margin-right: 8px;
   text-decoration: none;
 }
-.social-icon {display: block; width: 22px; height: 22px; background: currentColor; mask: var(--social-icon) center / contain no-repeat;}
-.social-icon-instagram {--social-icon: url('../icons/instagram.svg');}
-.social-icon-whatsapp {--social-icon: url('../icons/whatsapp.svg');}
-.social-icon-telephone {--social-icon: url('../icons/telephone.svg');}
-.social-link:hover {color: #657200; background: var(--yellow);}
-.site-footer .social-link:hover {color: var(--navy);}
 
-@media(max-width:600px){.nav-bar{gap:12px}}
-@media(max-width:380px){.menu-label{display:none}.menu-toggle{min-width:44px;justify-content:center;padding:10px}.brand-name{font-size:.8rem}.brand-name small{letter-spacing:.22em}}
-.ui-icon{display:inline-block;width:1.1em;height:1.1em;flex-shrink:0;vertical-align:-.16em}
-.menu-toggle{align-items:center;gap:8px}
-.nav-services[open] summary:after{transform:rotate(180deg)}
-.faq summary:after{top:23px;font-size:1.1rem}
-.hero-note span:before{width:14px;height:14px}
-.check-list li:before{margin-top:.3em}
-.service-strip a{display:inline-flex;align-items:center}
-.main-nav{gap:28px;line-height:1.4}
-.main-nav>.button{color:var(--navy);white-space:nowrap}
-@media(max-width:1100px) and (min-width:961px){.main-nav{gap:20px}}
-@media(max-width:960px){.menu-toggle{display:inline-flex}.main-nav{gap:0}.main-nav>a:not(.button),.nav-services summary{justify-content:flex-start;min-height:48px}.dropdown{top:auto}}
-@media(max-width:600px){.service-grid{gap:12px}.service-card h3{font-size:1.2rem;margin-bottom:8px;max-width:none}.service-card p{font-size:.9375rem;line-height:1.45;margin-bottom:12px}.service-card .card-link{font-size:.8125rem;min-height:24px}.service-card.cta-card .eyebrow{font-size:.65rem;margin-bottom:12px}.service-card.cta-card h3{font-size:1.45rem}.service-card.cta-card h3 br{display:none}.section{padding:44px 0}.feature{padding-top:20px}.feature-grid{gap:15px}}
+.social-link:hover {
+  color: #657200;
+  background: var(--yellow);
+}
+.site-footer .social-link:hover {
+  color: var(--navy);
+}
+
+@media (max-width: 600px) {
+  .nav-bar {
+    gap: 12px;
+  }
+}
+@media (max-width: 380px) {
+  .menu-label {
+    display: none;
+  }
+  .menu-toggle {
+    min-width: 44px;
+    justify-content: center;
+    padding: 10px;
+  }
+  .brand-name {
+    font-size: 0.8rem;
+  }
+  .brand-name small {
+    letter-spacing: 0.22em;
+  }
+}
+.ui-icon {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  vertical-align: -0.16em;
+}
+.menu-toggle {
+  align-items: center;
+  gap: 8px;
+}
+.nav-services[open] summary .nav-chevron {
+  transform: rotate(180deg);
+}
+.faq summary .faq-icon {
+  top: 23px;
+  font-size: 1.1rem;
+}
+.hero-note span > .list-icon {
+  width: 14px;
+  height: 14px;
+}
+.check-list li > .list-icon {
+  margin-top: 0.3em;
+}
+.service-strip a {
+  display: inline-flex;
+  align-items: center;
+}
+.main-nav {
+  gap: 28px;
+  line-height: 1.4;
+}
+.main-nav > .button {
+  color: var(--navy);
+  white-space: nowrap;
+}
+@media (max-width: 1100px) and (min-width: 961px) {
+  .main-nav {
+    gap: 20px;
+  }
+}
+@media (max-width: 960px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+  .main-nav {
+    gap: 0;
+  }
+  .main-nav > a:not(.button),
+  .nav-services summary {
+    justify-content: flex-start;
+    min-height: 48px;
+  }
+  .dropdown {
+    top: auto;
+  }
+}
+@media (max-width: 600px) {
+  .service-grid {
+    gap: 12px;
+  }
+  .service-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    max-width: none;
+  }
+  .service-card p {
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+  .service-card .card-link {
+    font-size: 0.8125rem;
+    min-height: 24px;
+  }
+  .service-card.cta-card .eyebrow {
+    font-size: 0.65rem;
+    margin-bottom: 12px;
+  }
+  .service-card.cta-card h3 {
+    font-size: 1.45rem;
+  }
+  .service-card.cta-card h3 br {
+    display: none;
+  }
+  .section {
+    padding: 44px 0;
+  }
+  .feature {
+    padding-top: 20px;
+  }
+  .feature-grid {
+    gap: 15px;
+  }
+}
 
 /* Compact typography for phones and narrow windows. */
 @media (max-width: 699.98px) {
   body {
-    font-size: .875rem;
+    font-size: 0.8125rem;
     line-height: 1.6;
   }
   h1,
   .hero h1,
   .page-hero h1,
   .detail-hero h1 {
-    font-size: clamp(1.875rem, 5.2vw, 2.25rem);
+    font-size: clamp(1.625rem, 4.8vw, 2rem);
     line-height: 1.12;
     margin-bottom: 18px;
   }
@@ -1319,7 +1405,7 @@ textarea[aria-invalid="true"] {
   .contact-side h2,
   .form-panel h2,
   .cta-band h2 {
-    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    font-size: clamp(1.375rem, 3.6vw, 1.625rem);
     line-height: 1.18;
   }
   h3,
@@ -1328,29 +1414,132 @@ textarea[aria-invalid="true"] {
   .process h3,
   .contact-option h3,
   .enquiry-preview h3 {
-    font-size: 1.0625rem;
+    font-size: 1rem;
     line-height: 1.25;
   }
   .service-card.cta-card h3 {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
   }
   .hero-copy > p,
   .page-hero p,
   .service-card p,
   .contact-option p,
   .photo-caption strong {
-    font-size: .875rem;
+    font-size: 0.8125rem;
     line-height: 1.6;
   }
   .button,
   .main-nav,
   .menu-toggle {
-    font-size: .8125rem;
+    font-size: 0.75rem;
   }
   /* Keep fields readable and avoid automatic zoom on mobile Safari. */
   input,
   textarea,
   select {
     font-size: 1rem;
+  }
+}
+
+/* Font Awesome webfont sizing; the brand logo remains an image. */
+.social-icon {
+  font-size: 18px;
+  line-height: 1;
+  text-align: center;
+}
+.ui-icon {
+  height: auto;
+  line-height: 1;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .service-card .icon {
+    font-size: 24px;
+  }
+}
+
+/* Keep the new photographs proportionate and their subjects in frame. */
+.hero-grid > *,
+.split > * {
+  min-width: 0;
+}
+.hero-photo.photo-closeup {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-position: 35% 25%;
+}
+.photo-caption {
+  position: relative;
+  inset: auto;
+  width: calc(100% - 24px);
+  margin: -24px 0 0 auto;
+}
+.split-photo.photo-landscape {
+  height: auto;
+  aspect-ratio: 1199 / 896;
+  object-fit: contain;
+}
+.image-frame--landscape .image-label {
+  position: static;
+}
+.split-photo.photo-portrait {
+  width: min(100%, 400px);
+  height: auto;
+  aspect-ratio: 1122 / 1402;
+  object-fit: contain;
+  justify-self: center;
+}
+.footer-credit {
+  white-space: nowrap;
+}
+.footer-bottom .designer-name {
+  font-family: cursive;
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--yellow);
+  margin-left: 0.15em;
+}
+.designer-name:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 699.98px) {
+  .hero-grid,
+  .split,
+  .detail-hero .split {
+    grid-template-columns: 1fr;
+  }
+  .hero-grid {
+    gap: 0;
+  }
+  .hero-copy {
+    padding: 36px 0 24px;
+  }
+  .hero-visual {
+    margin: 12px 0 36px;
+  }
+  .split-photo.photo-portrait {
+    width: min(100%, 320px);
+  }
+  .social-link,
+  .footer-col a.social-link,
+  .contact-option a.social-link {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+  .social-icon {
+    font-size: 14px;
+  }
+  .image-label {
+    font-size: 0.75rem;
+    padding: 14px 18px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.6875rem;
   }
 }

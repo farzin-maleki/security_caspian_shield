@@ -5,26 +5,26 @@
   const siteRoot = new URL("../../../", document.currentScript.src);
   const assetRoot = new URL("dist/assets/", siteRoot);
   const data = window.CASPIAN,
-    file = (location.pathname.split("/").pop() || "index.html").replace(/^(\w[\w-]*)$/, "$1.html");
-  const paths = {
-    shield: "M12 3 3 6v6c0 5 9 9 9 9s9-4 9-9V6l-9-3Z M8 12l3 3 5-6",
-    patrol:
-      "m3 14 2-6h14l2 6v5h-3v-2H6v2H3v-5Z M3 13h18 M7 8l1-3h8l1 3 M7 15h1 M16 15h1",
-    door: "M5 21V3h14v18 M3 21h18 M8 21V6l8-1v16 M12 13h1",
-    event:
-      "M4 21v-3c0-3 3-5 8-5s8 2 8 5v3 M12 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6 M3 10h3 M18 10h3",
-    building:
-      "M3 21h18 M5 21V5h9v16 M14 11h5v10 M8 8h3 M8 12h3 M8 16h3 M8 21v-2h3v2",
+    file = (location.pathname.split("/").pop() || "index.html").replace(
+      /^(\w[\w-]*)$/,
+      "$1.html",
+    );
+  const icons = {
+    shield: "shield-halved",
+    patrol: "car-side",
+    door: "door-open",
+    event: "users",
+    building: "building",
   };
   const icon = (name) =>
-    `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${paths[name] || paths.shield}"/></svg>`;
-  const brand = `<a class="brand" href="index.html" aria-label="Security Caspian Shield Ltd home"><img src="assets/images/logo.png" alt="" width="59" height="67"><span class="brand-name">CASPIAN SHIELD<small>SECURITY SERVICES</small></span></a>`;
+    `<i class="icon fa-solid fa-${icons[name] || icons.shield}" aria-hidden="true"></i>`;
+  const brand = `<a class="brand" href="index.html" aria-label="Security Caspian Shield Ltd home"><img src="assets/images/logo.webp" alt="" width="59" height="67"><span class="brand-name">CASPIAN SHIELD<small>SECURITY SERVICES</small></span></a>`;
   const link = (href, label) =>
     `<a href="${href}"${file === href ? ' aria-current="page"' : ""}>${label}</a>`;
   document.querySelector("[data-header]").innerHTML =
-    `<header class="site-header"><div class="wrap nav-bar">${brand}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation"><span class="menu-label">Menu</span> <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><nav class="main-nav" id="main-navigation" aria-label="Main navigation">${link("index.html", "Home")}${link("about.html", "About us")}<details class="nav-services"><summary>Our services</summary><div class="dropdown">${link("services.html", "All services")}${data.services.map((s) => link(s.id + ".html", s.name)).join("")}</div></details>${link("contact.html", "Contact us")}<a class="button" href="quote.html"${file === "quote.html" ? ' aria-current="page"' : ""}>Get a quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a></nav></div></header>`;
+    `<header class="site-header"><div class="wrap nav-bar">${brand}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation"><span class="menu-label">Menu</span> <i class="ui-icon fa-solid fa-bars" aria-hidden="true"></i></button><nav class="main-nav" id="main-navigation" aria-label="Main navigation">${link("index.html", "Home")}${link("about.html", "About us")}<details class="nav-services"><summary>Our services <i class="nav-chevron fa-solid fa-chevron-down" aria-hidden="true"></i></summary><div class="dropdown">${link("services.html", "All services")}${data.services.map((s) => link(s.id + ".html", s.name)).join("")}</div></details>${link("contact.html", "Contact us")}<a class="button" href="quote.html"${file === "quote.html" ? ' aria-current="page"' : ""}>Get a quote <span aria-hidden="true"><i class="ui-icon fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a></nav></div></header>`;
   document.querySelector("[data-footer]").innerHTML =
-    `<footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand">${brand}<p>Protecting your people, your property and your peace of mind.</p></div><div class="footer-col"><h3>COMPANY</h3><a href="about.html">About us</a><a href="services.html">Our services</a><a href="contact.html">Contact us</a><a href="quote.html">Get a quote</a></div><div class="footer-col"><h3>OUR SERVICES</h3>${data.services.map((s) => `<a href="${s.id}.html">${s.name}</a>`).join("")}</div><div class="footer-col"><h3>LET’S TALK</h3><a href="tel:${data.phone.replace(/\s/g, "")}">${data.phone}</a><a href="https://wa.me/${data.whatsapp.replace(/\D/g, "")}" target="_blank" rel="noopener noreferrer">Message on WhatsApp <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">Instagram <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} Security Caspian Shield Ltd. All rights reserved.</span><a href="#main">Back to top <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div></div></footer>`;
+    `<footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand">${brand}<p>Protecting your people, your property and your peace of mind.</p></div><div class="footer-col"><h3>COMPANY</h3><a href="about.html">About us</a><a href="services.html">Our services</a><a href="contact.html">Contact us</a><a href="quote.html">Get a quote</a></div><div class="footer-col"><h3>OUR SERVICES</h3>${data.services.map((s) => `<a href="${s.id}.html">${s.name}</a>`).join("")}</div><div class="footer-col"><h3>LET’S TALK</h3><a href="tel:${data.phone.replace(/\s/g, "")}">${data.phone}</a><a href="https://wa.me/${data.whatsapp.replace(/\D/g, "")}" target="_blank" rel="noopener noreferrer">Message on WhatsApp <i class="ui-icon fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">Instagram <i class="ui-icon fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} Security Caspian Shield Ltd. All rights reserved.</span><span class="footer-credit">Designed &amp; Built by <a class="designer-name" href="https://www.farzin-maleki.com/">Farzin</a></span></div></div></footer>`;
   const toggle = document.querySelector(".menu-toggle"),
     nav = document.querySelector(".main-nav"),
     dropdown = document.querySelector(".nav-services");
@@ -58,11 +58,11 @@
         .filter((s) => s.id !== el.dataset.exclude)
         .map(
           (s, i) =>
-            `<a class="service-card" href="${s.id}.html"><div>${icon(s.icon)}</div><h3>${s.name}</h3><p>${s.description}</p><span class="card-link">Explore service <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span></a>`,
+            `<a class="service-card" href="${s.id}.html"><div>${icon(s.icon)}</div><h3>${s.name}</h3><p>${s.description}</p><span class="card-link">Explore service <span aria-hidden="true"><i class="ui-icon fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></span></a>`,
         )
         .join("") +
       (el.dataset.cta !== undefined
-        ? `<a class="service-card cta-card" href="quote.html"><span class="eyebrow">YOUR SECURITY, YOUR WAY</span><h3>Find your protection.</h3><p>Tell us what you need to protect.</p><span class="card-link">Get a tailored quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></span></a>`
+        ? `<a class="service-card cta-card" href="quote.html"><span class="eyebrow">YOUR SECURITY, YOUR WAY</span><h3>Find your protection.</h3><p>Tell us what you need to protect.</p><span class="card-link">Get a tailored quote <span aria-hidden="true"><i class="ui-icon fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></span></a>`
         : "");
   });
   document
@@ -80,13 +80,13 @@
     .querySelectorAll("[data-cta]:not([data-services])")
     .forEach(
       (el) =>
-        (el.innerHTML = `<section class="cta-band"><div class="wrap"><div><h2>Let’s talk about your security.</h2><p>Tell us what you need. We’ll take it from there.</p></div><a class="button button-dark" href="quote.html">Get a tailored quote <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a></div></section>`),
+        (el.innerHTML = `<section class="cta-band"><div class="wrap"><div><h2>Let’s talk about your security.</h2><p>Tell us what you need. We’ll take it from there.</p></div><a class="button button-dark" href="quote.html">Get a tailored quote <span aria-hidden="true"><i class="ui-icon fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></a></div></section>`),
     );
   document
     .querySelectorAll("[data-contact-options]")
     .forEach(
       (el) =>
-        (el.innerHTML = `<div class="contact-option"><h3>Call our team</h3><p>Discuss your requirements.</p><a href="tel:${data.phone.replace(/\s/g, "")}">${data.phone}</a></div><div class="contact-option"><h3>WhatsApp</h3><p>Send us a message.</p><a href="https://wa.me/${data.whatsapp.replace(/\D/g, "")}" target="_blank" rel="noopener noreferrer">Message us on WhatsApp <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div><div class="contact-option"><h3>Email us</h3><a href="mailto:${data.email}">${data.email}</a></div><div class="contact-option"><h3>Find us on Instagram</h3><p>Team photos and updates.</p><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">@security_caspian_shield <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>`),
+        (el.innerHTML = `<div class="contact-option"><h3>Call our team</h3><p>Discuss your requirements.</p><a href="tel:${data.phone.replace(/\s/g, "")}">${data.phone}</a></div><div class="contact-option"><h3>WhatsApp</h3><p>Send us a message.</p><a href="https://wa.me/${data.whatsapp.replace(/\D/g, "")}" target="_blank" rel="noopener noreferrer">Message us on WhatsApp <i class="ui-icon fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div><div class="contact-option"><h3>Email us</h3><a href="mailto:${data.email}">${data.email}</a></div><div class="contact-option"><h3>Find us on Instagram</h3><p>Team photos and updates.</p><a href="${data.instagram}" target="_blank" rel="noopener noreferrer">@security_caspian_shield <i class="ui-icon fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>`),
     );
   const form = document.querySelector("#quote-form");
   if (form) {
@@ -160,32 +160,67 @@
   }
 
   // Root homepage and nested service pages share one navigation implementation.
-  document.querySelectorAll('a[href]').forEach(anchor => {
-    const href = anchor.getAttribute('href');
+  document.querySelectorAll("a[href]").forEach((anchor) => {
+    const href = anchor.getAttribute("href");
     if (/^[a-z-]+\.html(?:[?#]|$)/i.test(href)) {
-      anchor.href = new URL(href.startsWith('index.html') ? href : 'dist/' + href, siteRoot).href;
+      anchor.href = new URL(
+        href.startsWith("index.html") ? href : "dist/" + href,
+        siteRoot,
+      ).href;
     }
   });
-  document.querySelectorAll('[data-header] img, [data-footer] img').forEach(img => {
-    img.src = new URL('images/logo.png', assetRoot).href;
-  });
+  document
+    .querySelectorAll("[data-header] img, [data-footer] img")
+    .forEach((img) => {
+      img.src = new URL("images/logo.webp", assetRoot).href;
+    });
 
   // Icon-only contact links keep descriptive names for assistive technology.
-  document.querySelectorAll('a[href], a[data-send-whatsapp]').forEach(anchor => {
-    const href = anchor.getAttribute('href') || '';
-    let type, label;
-    if (href.startsWith('tel:')) {
-      type = 'telephone'; label = 'Call ' + data.phone;
-    } else if (href.startsWith('https://wa.me/') || anchor.hasAttribute('data-send-whatsapp')) {
-      type = 'whatsapp'; label = anchor.hasAttribute('data-send-whatsapp') ? 'Open quote in WhatsApp' : 'Message us on WhatsApp';
-    } else if (href.startsWith('https://www.instagram.com/')) {
-      type = 'instagram'; label = 'Visit Security Caspian Shield on Instagram';
-    }
-    if (!type) return;
-    anchor.classList.remove('button', 'text-link');
-    anchor.classList.add('social-link');
-    anchor.setAttribute('aria-label', label);
-    anchor.setAttribute('title', label);
-    anchor.innerHTML = '<span class="social-icon social-icon-' + type + '" aria-hidden="true"></span>';
+  document
+    .querySelectorAll("a[href], a[data-send-whatsapp]")
+    .forEach((anchor) => {
+      const href = anchor.getAttribute("href") || "";
+      let type, label;
+      if (href.startsWith("tel:")) {
+        type = "telephone";
+        label = "Call " + data.phone;
+      } else if (
+        href.startsWith("https://wa.me/") ||
+        anchor.hasAttribute("data-send-whatsapp")
+      ) {
+        type = "whatsapp";
+        label = anchor.hasAttribute("data-send-whatsapp")
+          ? "Open quote in WhatsApp"
+          : "Message us on WhatsApp";
+      } else if (href.startsWith("https://www.instagram.com/")) {
+        type = "instagram";
+        label = "Visit Security Caspian Shield on Instagram";
+      }
+      if (!type) return;
+      anchor.classList.remove("button", "text-link");
+      anchor.classList.add("social-link");
+      anchor.setAttribute("aria-label", label);
+      anchor.setAttribute("title", label);
+      const socialClass =
+        type === "telephone" ? "fa-solid fa-phone" : "fa-brands fa-" + type;
+      anchor.innerHTML =
+        '<i class="social-icon ' + socialClass + '" aria-hidden="true"></i>';
+    });
+  // Explicit Font Awesome elements replace CSS-generated interface icons.
+  document
+    .querySelectorAll(".check-list li, .hero-note span, .service-strip a")
+    .forEach((element) => {
+      const marker = document.createElement("i");
+      marker.className =
+        "list-icon fa-solid " +
+        (element.closest(".service-strip") ? "fa-plus" : "fa-check");
+      marker.setAttribute("aria-hidden", "true");
+      element.prepend(marker);
+    });
+  document.querySelectorAll(".faq summary").forEach((summary) => {
+    summary.insertAdjacentHTML(
+      "beforeend",
+      '<i class="faq-icon faq-expand fa-solid fa-plus" aria-hidden="true"></i><i class="faq-icon faq-collapse fa-solid fa-minus" aria-hidden="true"></i>',
+    );
   });
 })();
