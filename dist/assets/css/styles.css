@@ -1393,7 +1393,6 @@ textarea[aria-invalid="true"] {
     line-height: 1.6;
   }
   h1,
-  .hero h1,
   .page-hero h1,
   .detail-hero h1 {
     font-size: clamp(1.625rem, 4.8vw, 2rem);
