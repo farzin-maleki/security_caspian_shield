@@ -155,6 +155,7 @@ p {
   background: var(--yellow);
   color: var(--navy);
   padding: 15px 23px;
+  border-radius: 4px;
   font-size: 0.875rem;
   font-weight: 700;
   min-height: 52px;
@@ -335,6 +336,7 @@ header :focus-visible {
   display: none;
   background: transparent;
   color: white;
+  border-radius: 8px;
   border: 1px solid #50606b;
   padding: 8px 13px;
   min-height: 44px;
@@ -463,6 +465,7 @@ header :focus-visible {
 }
 .service-card {
   border: 1px solid var(--line);
+  border-radius: 4px;
   padding: 32px;
   display: flex;
   flex-direction: column;
