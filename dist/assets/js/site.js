@@ -1,4 +1,4 @@
-/* Shared components and behaviour. Works on static hosting and file://. */
+/* Shared components and behaviour. Serve through the configured Vercel routes. */
 (() => {
   "use strict";
   // Resolve shared links from this script, independent of page depth or hosting folder.
@@ -164,7 +164,7 @@
     const href = anchor.getAttribute("href");
     if (/^[a-z-]+\.html(?:[?#]|$)/i.test(href)) {
       anchor.href = new URL(
-        href.startsWith("index.html") ? href : "dist/" + href,
+        href.replace(/^index\.html/, "").replace(/\.html(?=[?#]|$)/, ""),
         siteRoot,
       ).href;
     }

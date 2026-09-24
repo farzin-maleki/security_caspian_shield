@@ -1,0 +1,193 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/dist/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/dist/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/dist/construction-security.html",
+      "destination": "/construction-security",
+      "permanent": true
+    },
+    {
+      "source": "/dist/construction-security",
+      "destination": "/construction-security",
+      "permanent": true
+    },
+    {
+      "source": "/construction-security.html",
+      "destination": "/construction-security",
+      "permanent": true
+    },
+    {
+      "source": "/dist/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/dist/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/dist/door-supervisor.html",
+      "destination": "/door-supervisor",
+      "permanent": true
+    },
+    {
+      "source": "/dist/door-supervisor",
+      "destination": "/door-supervisor",
+      "permanent": true
+    },
+    {
+      "source": "/door-supervisor.html",
+      "destination": "/door-supervisor",
+      "permanent": true
+    },
+    {
+      "source": "/dist/event-security.html",
+      "destination": "/event-security",
+      "permanent": true
+    },
+    {
+      "source": "/dist/event-security",
+      "destination": "/event-security",
+      "permanent": true
+    },
+    {
+      "source": "/event-security.html",
+      "destination": "/event-security",
+      "permanent": true
+    },
+    {
+      "source": "/dist/mobile-patrol.html",
+      "destination": "/mobile-patrol",
+      "permanent": true
+    },
+    {
+      "source": "/dist/mobile-patrol",
+      "destination": "/mobile-patrol",
+      "permanent": true
+    },
+    {
+      "source": "/mobile-patrol.html",
+      "destination": "/mobile-patrol",
+      "permanent": true
+    },
+    {
+      "source": "/dist/quote.html",
+      "destination": "/quote",
+      "permanent": true
+    },
+    {
+      "source": "/dist/quote",
+      "destination": "/quote",
+      "permanent": true
+    },
+    {
+      "source": "/quote.html",
+      "destination": "/quote",
+      "permanent": true
+    },
+    {
+      "source": "/dist/security-guard.html",
+      "destination": "/security-guard",
+      "permanent": true
+    },
+    {
+      "source": "/dist/security-guard",
+      "destination": "/security-guard",
+      "permanent": true
+    },
+    {
+      "source": "/security-guard.html",
+      "destination": "/security-guard",
+      "permanent": true
+    },
+    {
+      "source": "/dist/services.html",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/dist/services",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/services",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/dist/about.html"
+    },
+    {
+      "source": "/construction-security",
+      "destination": "/dist/construction-security.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/dist/contact.html"
+    },
+    {
+      "source": "/door-supervisor",
+      "destination": "/dist/door-supervisor.html"
+    },
+    {
+      "source": "/event-security",
+      "destination": "/dist/event-security.html"
+    },
+    {
+      "source": "/mobile-patrol",
+      "destination": "/dist/mobile-patrol.html"
+    },
+    {
+      "source": "/quote",
+      "destination": "/dist/quote.html"
+    },
+    {
+      "source": "/security-guard",
+      "destination": "/dist/security-guard.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/dist/services.html"
+    }
+  ]
+}

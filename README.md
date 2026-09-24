@@ -29,7 +29,7 @@ dist/                         # Supporting pages and shared assets
     images/premises.webp
 ```
 
-Open `index.html` directly, or use a local static server such as Live Server. Every page is a separate HTML document with its own title, description and main content. Shared components load through deferred scripts. No client-side router is used. For ordinary static hosting, upload the root `index.html` and the `dist` folder together, preserving this layout. Do not upload repository metadata or development scripts.
+Use `vercel dev` for a local preview that supports the clean routes in `vercel.json`. A plain file preview or Live Server does not apply these routing rules. Every page is a separate HTML document with its own title, description and main content. Shared components load through deferred scripts. No client-side router is used. Deploy the repository root to Vercel, including `vercel.json`, `index.html` and `dist/`. The configuration serves the existing HTML files at clean URLs such as `/about`, `/services` and `/quote`. Old `.html` URLs permanently redirect to the clean URLs. Other hosts need equivalent redirect and rewrite rules. Do not upload repository metadata or development scripts.
 
 
 ## Editing
