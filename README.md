@@ -42,6 +42,10 @@ Open `index.html` directly, or use a local static server such as Live Server. Ev
 - All interface icons use Font Awesome `<i>` elements. Each page loads `https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css`; an internet connection is needed for these icons. Instagram, WhatsApp and telephone links retain accessible names and hover titles. Their targets still come from `data.js`.
 - Page-specific content: the separate HTML files. Detailed service prose is also retained in the data file for reuse; keep it aligned when editing.
 
+## Link previews
+
+All 10 pages include static Open Graph and Twitter Card metadata, with page-specific titles and descriptions. Public URLs use https://securitycaspianshield.com/ and the shared image is `dist/assets/images/caspianBold.webp` (1264 × 843). Update these absolute URLs in each HTML head if the domain or deployment path changes. Upload the updated HTML and image together; sharing services may cache earlier previews.
+
 ## Quote requests
 
 The form validates required fields, email format and phone length, supports service preselection, and shows an enquiry preview. Visitors choose email or WhatsApp, review the prepared message and send it themselves. The site never claims delivery. There is no backend inbox or automatic mail delivery, and no analytics or browser storage of personal details. An email application is required for mailto links. No enquiry was sent during testing.
